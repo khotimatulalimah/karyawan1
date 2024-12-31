@@ -185,10 +185,11 @@
 
         <!-- Sidebar Menu Items -->
         <ul class="menu-item">
-            <li><a href="items" class="{{ Request::is('items*') ? 'active' : '' }}"><i class="bi bi-box"></i> Cek Barang</a></li>
+            <li><a href="items" class="{{ Request::is('items*') ? 'active' : '' }}"><i class="bi bi-box"></i> Kelola Barang</a></li>
             <li><a href="report" class="{{ Request::is('report*') ? 'active' : '' }}"><i class="bi bi-people"></i> Laporan</a></li>
             <li><a href="categories" class="{{ Request::is('categories*') ? 'active' : '' }}"><i class="bi bi-tag"></i> Kategori</a></li>
-            <li><a href="sale" class="{{ Request::is('sale*') ? 'active' : '' }}"><i class="bi bi-basket"></i> Transaksi</a></li>
+            <li><a href="sale" class="{{ Request::is('sale*') ? 'active' : '' }}"><i class="bi bi-basket"></i> Penjualan</a></li>
+            <li><a href="product" class="{{ Request::is('product*') ? 'active' : '' }}"><i class="bi bi-basket"></i> Produk</a></li>
         </ul>
 
         <!-- Logout Button -->

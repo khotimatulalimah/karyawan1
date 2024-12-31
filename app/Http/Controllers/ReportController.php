@@ -13,13 +13,4 @@ class ReportController extends Controller
         $pendapatan = Revenue::all();
         return view('report.index', compact('pendapatan'));
     }
-
-    public function print($id)
-    {
-        // Mengambil data pendapatan berdasarkan ID
-        $pendapatan = Revenue::findOrFail($id);
-        
-        // Mengirim data ke view untuk dicetak
-        return view('report.print', compact('pendapatan'));
-    }
 }

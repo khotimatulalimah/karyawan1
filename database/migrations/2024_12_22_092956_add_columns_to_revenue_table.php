@@ -12,9 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('revenue', function (Blueprint $table) {
-            $table->date('tanggal_awal');   // Menambahkan kolom tanggal_awal
-            $table->date('tanggal_akhir');  // Menambahkan kolom tanggal_akhir
-            $table->decimal('pendapatan', 15, 2); // Menambahkan kolom pendapatan
+            // Tambahkan kolom hanya jika belum ada
+            if (!Schema::hasColumn('revenue', 'tanggal_awal')) {
+                $table->date('tanggal_awal'); // Menambahkan kolom tanggal_awal
+            }
+
+            if (!Schema::hasColumn('revenue', 'tanggal_akhir')) {
+                $table->date('tanggal_akhir'); // Menambahkan kolom tanggal_akhir
+            }
+
+            if (!Schema::hasColumn('revenue', 'pendapatan')) {
+                $table->decimal('pendapatan', 15, 2); // Menambahkan kolom pendapatan
+            }
         });
     }
 
@@ -24,7 +33,18 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('revenue', function (Blueprint $table) {
-            $table->dropColumn(['tanggal_awal', 'tanggal_akhir', 'pendapatan']);
+            // Hapus kolom jika ada
+            if (Schema::hasColumn('revenue', 'tanggal_awal')) {
+                $table->dropColumn('tanggal_awal');
+            }
+
+            if (Schema::hasColumn('revenue', 'tanggal_akhir')) {
+                $table->dropColumn('tanggal_akhir');
+            }
+
+            if (Schema::hasColumn('revenue', 'pendapatan')) {
+                $table->dropColumn('pendapatan');
+            }
         });
     }
 };

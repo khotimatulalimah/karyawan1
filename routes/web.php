@@ -12,11 +12,24 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\ProductScoreController;
+use App\Models\Product;
+use App\Http\Controllers\ProductController;
+
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+// Menampilkan daftar produk
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+// Proses keputusan dan simpan hasil ranking
+Route::post('/product/process-decision', [ProductController::class, 'processDecision'])->name('decision.process');
+// Menampilkan halaman hasil ranking
+Route::get('/result', [ProductController::class, 'showResult'])->name('result.index');
+
 
 
 // Rute untuk mencetak laporan pendapatan
@@ -77,9 +90,11 @@ Route::post('/login', [RegisterController::class, 'login']);
 Route::post('/logout', [RegisterController::class, 'logout']);
 
 
+Route::get('/items', [ItemController::class, 'index'])->name('items.index');
 Route::resource('items', ItemController::class);
-Route::get('items/create', [ItemController::class, 'create'])->name('items.create');
-Route::post('items', [ItemController::class, 'store'])->name('items.store');
+Route::post('/items/store', [ItemController::class, 'store'])->name('items.store');
+
+
 
 Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
 Route::get('/categories/create', [CategoryController::class, 'create'])->name('categories.create');
@@ -87,6 +102,10 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
 Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+
+// Route untuk mengambil data nama barang untuk autocomplete
+// routes/web.php
 
 Route::get('/sale', [SaleController::class, 'index'])->name('sale.index');
 Route::get('/sale/create', [SaleController::class, 'create'])->name('sale.create');

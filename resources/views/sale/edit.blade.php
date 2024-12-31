@@ -28,6 +28,13 @@
             <label for="subtotal" class="form-label">Subtotal:</label>
             <input type="number" class="form-control" id="subtotal" name="subtotal" value="{{ $transaction->subtotal }}" readonly>
         </div>
+
+        <div class="form-group">
+            <label for="netto">Netto</label>
+            <input type="text" name="netto" class="form-control" value="{{ $transaction->netto }}" required>
+
+        </div>
+
         <div class="mb-3">
             <label for="metode_pembayaran" class="form-label">Metode Pembayaran:</label>
             <select name="metode_pembayaran" id="metode_pembayaran" class="form-select" required>

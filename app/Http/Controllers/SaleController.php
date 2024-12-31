@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 class SaleController extends Controller
 {
 
+
+
+    
+
     public function pendapatanForm()
     {
     return view('sale.pendapatan');
@@ -65,6 +69,7 @@ class SaleController extends Controller
             'tanggal' => 'required|date',
             'harga' => 'required|numeric|min:0',
             'jumlah' => 'required|numeric|min:1',
+            'netto' => 'required|string|max:255', 
             'metode_pembayaran' => 'required|string|max:255',
         ]);
 
@@ -89,6 +94,7 @@ class SaleController extends Controller
             'tanggal' => 'required|date',
             'harga' => 'required|numeric|min:0',
             'jumlah' => 'required|numeric|min:1',
+            'netto' => 'required|string|max:255', 
             'metode_pembayaran' => 'required|string|max:255',
         ]);
 
